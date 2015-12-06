@@ -1,4 +1,4 @@
-with open("adventofcode2.in", "r") as f:
+with open("2.in", "r") as f:
 	presents = f.readlines()
 	paper = 0
 	ribbon = 0
