@@ -1,4 +1,4 @@
-lights = [[False for i in range(1000)] for i in range(1000)]
+lights = [[0 for i in range(1000)] for i in range(1000)]
 
 def show():
 	for row in lights:
@@ -21,16 +21,19 @@ with open('6.in', 'r') as f:
 		if instruction[0] == 'turn':
 			for x in range(start[0], end[0] + 1):
 				for y in range(start[1], end[1] + 1):
-					#print(x, y)
-					lights[x][y] = instruction[1] == 'on'
+					if instruction[1] == 'on':
+						lights[x][y] += 1
+					else:
+						lights[x][y] -= 1
+						if lights[x][y] < 0: lights[x][y] = 0
 					#show()
 		elif instruction[0] == 'toggle':
 			for x in range(start[0], end[0] + 1):
 				for y in range(start[1], end[1] + 1):
-					lights[x][y] = not(lights[x][y])
+					lights[x][y] += 2
 
-	i = 0
+	total = 0
 	for row in lights:
 		for light in row:
-			if light: i += 1
-	print(i)
+			total += light
+	print(total)
