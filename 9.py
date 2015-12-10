@@ -11,6 +11,7 @@ with open('9.in', 'r') as f:
 		mapa[words[2]][words[0]] = int(words[-1])
 
 shortest = 9999999999999999999999999999999999999999999
+longest = 0
 
 for start, ends in mapa.items():
 	for city, distance in ends.items():
@@ -27,5 +28,6 @@ for path in permutations(mapa.keys()):
 		prev = city
 	print(path, cost)
 	if cost < shortest: shortest = cost
+	if cost > longest: longest = cost
 
-print(shortest)
+print(shortest, longest)
